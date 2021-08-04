@@ -4,11 +4,15 @@ async function getChar() {
     let data = await response.json();
 
     let eleFound = false;
-    let name = document.querySelector("input").value;
+
+    let input = document.querySelector("input");
+    let name = input.value;
+    input.value = "";
 
     data.forEach((ele) => {
       if (ele.name.toLowerCase() == name.toLowerCase()) {
         eleFound = true;
+
         let container = document.getElementById("container");
         container.innerHTML = "";
 
@@ -17,7 +21,7 @@ async function getChar() {
         let col = createEle("div", "col");
         col.setAttribute("class", "mr-auto ml-auto");
 
-        let card = createEle("div", "card border border-info");
+        let card = createEle("div", "card border border-secondary");
         card.setAttribute("style", "width: 18rem;");
 
         let img = createEle("img", "card-img-top h-25");
